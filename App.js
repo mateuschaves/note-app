@@ -1,21 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+
+import React from "react";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import PostsScreen from "./src/screens/PostsScreen";
+import CreatePostScreen from "./src/screens/CreatePostScreen";
+import EditPostScreen from "./src/screens/EditPostScreen";
+import ShowPostScreen from "./src/screens/ShowPostScreen";
 
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="CreatePost">
+        <Stack.Screen
+          name="Posts"
+          component={PostsScreen}
+          options={{
+            headerTitle: "Publicações",
+          }}
+        />
+        <Stack.Screen
+          name="CreatePost"
+          component={CreatePostScreen}
+          options={{
+            headerTitle: "Nova Publicação",
+          }}
+        />
+        <Stack.Screen
+          name="EditPost"
+          component={EditPostScreen}
+          options={{
+            headerTitle: "Editar Publicação",
+          }}
+        />
+        <Stack.Screen
+          name="ShowPost"
+          component={ShowPostScreen}
+          options={{
+            headerTitle: "Publicação",
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
