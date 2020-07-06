@@ -16,9 +16,9 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <BlogProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="CreatePost">
+    <NavigationContainer>
+      <BlogProvider>
+        <Stack.Navigator initialRouteName="Posts">
           <Stack.Screen
             name="Posts"
             component={PostsScreen}
@@ -48,7 +48,7 @@ export default function App() {
             }}
           />
         </Stack.Navigator>
-      </NavigationContainer>
-    </BlogProvider>
+      </BlogProvider>
+    </NavigationContainer>
   );
 }

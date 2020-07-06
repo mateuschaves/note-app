@@ -1,10 +1,15 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useContext } from "react";
+
+import BlogContext from "../../context/BlogContext";
+
+import { Container, Text } from "./styles";
 
 export default function PostsScreen() {
+  const value = useContext(BlogContext);
+
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <Container>
+      <Text>{value}</Text>
+    </Container>
   );
 }
