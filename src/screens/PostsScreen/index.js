@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import BlogContext from "../../context/BlogContext";
 
@@ -10,7 +10,7 @@ import { StatusBar } from "react-native";
 import { Container, Section, ScrollView } from "./styles";
 
 export default function PostsScreen() {
-  const { data, addBlogPost } = useContext(BlogContext);
+  const { data } = useContext(BlogContext);
 
   return (
     <>
