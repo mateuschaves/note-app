@@ -9,6 +9,7 @@ export const BlogProvider = ({ children }) => {
     setBlogPosts([
       ...blogPosts,
       {
+        id: new Date().getTime(),
         title,
         content,
       },

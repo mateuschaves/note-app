@@ -2,7 +2,8 @@ import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
   flex-basis: 40%;
-  border-color: rgb(136, 153, 166);
+  border-color: ${(props) =>
+    props.selected ? "#1da1f2" : "rgb(136, 153, 166)"};
   border-width: 0.6px;
   border-radius: 8px;
   padding: 8px 8px 17px 17px;
