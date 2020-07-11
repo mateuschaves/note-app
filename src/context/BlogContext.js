@@ -17,9 +17,22 @@ export const BlogProvider = ({ children }) => {
   };
 
   const removeBlogPost = ({ id }) => {
-    console.log(`deletando post com id ${id}`);
     const blogPostFiltered = blogPosts.filter((post) => post.id !== id);
     setBlogPosts(blogPostFiltered);
+  };
+
+  const editBlogPost = ({ id, title, content }) => {
+    const newBlogPosts = blogPosts.map((post) => {
+      if (post.id === id)
+        return {
+          ...post,
+          title,
+          content,
+        };
+      else return post;
+    });
+
+    setBlogPosts(newBlogPosts);
   };
 
   return (
@@ -28,6 +41,7 @@ export const BlogProvider = ({ children }) => {
         data: blogPosts,
         addBlogPost,
         removeBlogPost,
+        editBlogPost,
       }}
     >
       {children}

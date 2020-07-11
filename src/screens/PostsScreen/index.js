@@ -45,7 +45,7 @@ export default function PostsScreen({ navigation }) {
       headerRight: () => (
         <PostSelectedButtonsOptions
           handleRemovePost={() => handleRemovePost({ id })}
-          handleEditPost={() => handleEditPost({ id })}
+          handleEditPost={() => handleEditPost({ id, title, content })}
         />
       ),
       headerLeft: () => (
@@ -67,8 +67,13 @@ export default function PostsScreen({ navigation }) {
     });
   }
 
-  function handleEditPost({ id }) {
-    alert("editar");
+  function handleEditPost({ id, title, content }) {
+    handleUndoLongPress();
+    navigation.navigate("EditPost", {
+      id,
+      title,
+      content,
+    });
   }
 
   function handleRemovePost({ id }) {
