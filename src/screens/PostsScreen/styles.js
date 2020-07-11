@@ -12,3 +12,12 @@ export const Container = styled.View`
 export const Text = styled.Text`
   color: #fff;
 `;
+
+export const Section = styled.View`
+  flex: 1;
+  flex-direction: column;
+`;
+
+export const ScrollView = styled.ScrollView`
+  background-color: rgb(21, 32, 43);
+`;
