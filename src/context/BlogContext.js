@@ -16,11 +16,18 @@ export const BlogProvider = ({ children }) => {
     ]);
   };
 
+  const removeBlogPost = ({ id }) => {
+    console.log(`deletando post com id ${id}`);
+    const blogPostFiltered = blogPosts.filter((post) => post.id !== id);
+    setBlogPosts(blogPostFiltered);
+  };
+
   return (
     <BlogContext.Provider
       value={{
         data: blogPosts,
-        addBlogPost: addBlogPost,
+        addBlogPost,
+        removeBlogPost,
       }}
     >
       {children}

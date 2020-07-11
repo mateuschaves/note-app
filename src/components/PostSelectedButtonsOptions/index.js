@@ -4,11 +4,24 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import { Container } from "./styles";
 
-export default function PostSelectedButtonsOptions() {
+export default function PostSelectedButtonsOptions({
+  handleEditPost,
+  handleRemovePost,
+}) {
   return (
     <Container>
-      <MaterialCommunityIcons color="#fff" size={25} name="pencil" />
-      <MaterialCommunityIcons color="#fff" size={25} name="trash-can" />
+      <MaterialCommunityIcons
+        color="#fff"
+        size={25}
+        name="pencil"
+        onPress={handleEditPost}
+      />
+      <MaterialCommunityIcons
+        color="#fff"
+        size={25}
+        name="trash-can"
+        onPress={handleRemovePost}
+      />
     </Container>
   );
 }

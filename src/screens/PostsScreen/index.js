@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import BlogContext from "../../context/BlogContext";
 
@@ -12,7 +12,7 @@ import AddPostButton from "./AddPostButton";
 import PostSelectedButtonsOptions from "../../components/PostSelectedButtonsOptions";
 import PostSelectedBackButton from "../../components/PostSelectedBackButton";
 
-import { StatusBar } from "react-native";
+import { StatusBar, Vibration } from "react-native";
 
 import {
   Container,
@@ -24,8 +24,10 @@ import {
 } from "./styles";
 
 export default function PostsScreen({ navigation }) {
-  const { data } = useContext(BlogContext);
+  const { data, removeBlogPost } = useContext(BlogContext);
   const [postSelected, setPostSelected] = useState({});
+
+  useEffect(() => {}, [postSelected]);
 
   function handleLongPress({ id, title, content }) {
     setPostSelected({
@@ -33,13 +35,19 @@ export default function PostsScreen({ navigation }) {
       title,
       content,
     });
+    Vibration.vibrate(50);
     navigation.setOptions({
       headerTitle: title ? title : "Publicações",
       headerTintColor: "#fff",
       headerStyle: {
         backgroundColor: "rgb(21, 32, 43)",
       },
-      headerRight: () => <PostSelectedButtonsOptions />,
+      headerRight: () => (
+        <PostSelectedButtonsOptions
+          handleRemovePost={() => handleRemovePost({ id })}
+          handleEditPost={() => handleEditPost({ id })}
+        />
+      ),
       headerLeft: () => (
         <PostSelectedBackButton handleBackClick={() => handleUndoLongPress()} />
       ),
@@ -57,6 +65,15 @@ export default function PostsScreen({ navigation }) {
       headerRight: () => {},
       headerLeft: () => {},
     });
+  }
+
+  function handleEditPost({ id }) {
+    alert("editar");
+  }
+
+  function handleRemovePost({ id }) {
+    removeBlogPost({ id });
+    handleUndoLongPress();
   }
 
   function renderContent() {
@@ -79,26 +96,25 @@ export default function PostsScreen({ navigation }) {
         <ScrollView>
           <Container>
             <Section>
-              {data.slice(0, data.length / 2).map((blog) => (
-                <Post
-                  key={blog.id}
-                  id={blog.id}
-                  title={blog.title}
-                  content={`${blog.content}${blog.content}`}
-                  onLongPress={handleLongPress}
-                  selected={blog.id === postSelected.id}
-                  onPress={blog.id ? handleUndoLongPress : null}
-                />
-              ))}
-            </Section>
-
-            <Section>
               {data.slice(data.length / 2).map((blog) => (
                 <Post
                   key={blog.id}
                   id={blog.id}
                   title={blog.title}
                   content={blog.content}
+                  onLongPress={handleLongPress}
+                  selected={blog.id === postSelected.id}
+                  onPress={blog.id ? handleUndoLongPress : null}
+                />
+              ))}
+            </Section>
+            <Section>
+              {data.slice(0, data.length / 2).map((blog) => (
+                <Post
+                  key={blog.id}
+                  id={blog.id}
+                  title={blog.title}
+                  content={`${blog.content}${blog.content}`}
                   onLongPress={handleLongPress}
                   selected={blog.id === postSelected.id}
                   onPress={blog.id ? handleUndoLongPress : null}
