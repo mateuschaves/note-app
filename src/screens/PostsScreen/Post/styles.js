@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
-  flex-basis: 40%;
   border-color: rgb(136, 153, 166);
   border-width: 0.6px;
   border-radius: 8px;
