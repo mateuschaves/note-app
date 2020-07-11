@@ -1,15 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import BlogContext from "../../context/BlogContext";
 
-import { Container, Text } from "./styles";
+import Post from "./Post";
+
+import { FlatList, StatusBar, ScrollView } from "react-native";
+
+import { Container } from "./styles";
 
 export default function PostsScreen() {
-  const value = useContext(BlogContext);
+  const { data, addBlogPost } = useContext(BlogContext);
+
+  useEffect(() => {
+    addBlogPost();
+  }, []);
 
   return (
-    <Container>
-      <Text>{value}</Text>
-    </Container>
+    <ScrollView>
+      <Container>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor=" rgb(21, 32, 43)"
+        />
+        {data.map((blog, id) => (
+          <Post key={id} title={blog.title} content={blog.content} />
+        ))}
+      </Container>
+    </ScrollView>
   );
 }

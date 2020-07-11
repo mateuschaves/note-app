@@ -24,6 +24,10 @@ export default function App() {
             component={PostsScreen}
             options={{
               headerTitle: "Publicações",
+              headerTintColor: "#fff",
+              headerStyle: {
+                backgroundColor: "rgb(21, 32, 43)",
+              },
             }}
           />
           <Stack.Screen
@@ -31,6 +35,10 @@ export default function App() {
             component={CreatePostScreen}
             options={{
               headerTitle: "Nova Publicação",
+              headerTintColor: "#fff",
+              headerStyle: {
+                backgroundColor: "rgb(21, 32, 43)",
+              },
             }}
           />
           <Stack.Screen
@@ -38,6 +46,10 @@ export default function App() {
             component={EditPostScreen}
             options={{
               headerTitle: "Editar Publicação",
+              headerTintColor: "#fff",
+              headerStyle: {
+                backgroundColor: "rgb(21, 32, 43)",
+              },
             }}
           />
           <Stack.Screen
@@ -45,6 +57,10 @@ export default function App() {
             component={ShowPostScreen}
             options={{
               headerTitle: "Publicação",
+              headerTintColor: "#fff",
+              headerStyle: {
+                backgroundColor: "rgb(21, 32, 43)",
+              },
             }}
           />
         </Stack.Navigator>
