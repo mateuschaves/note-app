@@ -119,7 +119,7 @@ export default function PostsScreen({ navigation }) {
                   key={blog.id}
                   id={blog.id}
                   title={blog.title}
-                  content={`${blog.content}${blog.content}`}
+                  content={blog.content}
                   onLongPress={handleLongPress}
                   selected={blog.id === postSelected.id}
                   onPress={blog.id ? handleUndoLongPress : null}

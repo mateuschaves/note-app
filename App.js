@@ -8,7 +8,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import PostsScreen from "./src/screens/PostsScreen";
 import CreatePostScreen from "./src/screens/CreatePostScreen";
 import EditPostScreen from "./src/screens/EditPostScreen";
-import ShowPostScreen from "./src/screens/ShowPostScreen";
 
 import { BlogProvider } from "./src/context/BlogContext";
 
@@ -46,17 +45,6 @@ export default function App() {
             component={EditPostScreen}
             options={{
               headerTitle: "Editar Publicação",
-              headerTintColor: "#fff",
-              headerStyle: {
-                backgroundColor: "rgb(21, 32, 43)",
-              },
-            }}
-          />
-          <Stack.Screen
-            name="ShowPost"
-            component={ShowPostScreen}
-            options={{
-              headerTitle: "Publicação",
               headerTintColor: "#fff",
               headerStyle: {
                 backgroundColor: "rgb(21, 32, 43)",
