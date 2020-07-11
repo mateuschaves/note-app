@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Title, Content, Divider } from "./styles";
+import { Container, Title, Content } from "./styles";
 
 export default function Post({ title, content }) {
   return (
