@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import AsyncStorage from "@react-native-community/async-storage";
 
 const BlogContext = React.createContext();
 
 export const BlogProvider = ({ children }) => {
   const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    getContextFromStorage().then((context) => setBlogPosts(context || []));
+  }, []);
+
+  useEffect(() => {
+    saveContext();
+  }, [blogPosts]);
 
   const addBlogPost = ({ title, content }) => {
     setBlogPosts([
@@ -34,6 +44,17 @@ export const BlogProvider = ({ children }) => {
 
     setBlogPosts(newBlogPosts);
   };
+
+  async function saveContext() {
+    return await AsyncStorage.setItem(
+      "@blog-app/context/blog",
+      JSON.stringify(blogPosts)
+    );
+  }
+
+  async function getContextFromStorage() {
+    return JSON.parse(await AsyncStorage.getItem("@blog-app/context/blog"));
+  }
 
   return (
     <BlogContext.Provider
