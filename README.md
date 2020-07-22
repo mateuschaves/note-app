@@ -1,5 +1,5 @@
 # Note App
-:pencil: App that uses React Native Context API to handle note data developed on this course: udemy.com/course/the-complete-react-native-and-redux-course
+:pencil: App that uses React Native Context API to handle note data developed on this course: https://udemy.com/course/the-complete-react-native-and-redux-course
 
 <p float="left">
   <img src="https://img.imageupload.net/2020/07/22/Anotacao-2020-07-22-012936.png" width="250" height="500" />
