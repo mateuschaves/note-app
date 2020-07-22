@@ -29,8 +29,4 @@ $ npm install
 
 ```bash
 # android
-$ react-native run-android
-
-# ios
-$ react-native run-ios
-```
+$ yarn start
