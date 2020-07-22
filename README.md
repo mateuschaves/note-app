@@ -28,5 +28,5 @@ $ yarn install
 ## Running the app
 
 ```bash
-# android
+# expo
 $ yarn start
