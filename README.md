@@ -12,7 +12,7 @@
 # Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Technologies
